@@ -1,0 +1,952 @@
+/* ===== General ===== */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #1e1e2f;
+  color: #e0e0e0;
+  scroll-behavior: smooth;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff4081, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(20, 20, 35, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 64, 129, 0.2);
+  box-sizing: border-box;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff4081;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-links li {
+  flex-shrink: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-weight: 500;
+  position: relative;
+  padding: 5px 0;
+  white-space: nowrap;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ff4081;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff4081, #a855f7);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #fff;
+  user-select: none;
+}
+
+/* ===== Responsive Navbar ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: 0;
+    background: rgba(20, 20, 35, 0.95);
+    height: calc(100vh - 60px);
+    width: 220px;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+    border-radius: 8px 0 0 8px;
+  }
+
+  .nav-links.show {
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 18px;
+    white-space: normal;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #0d0d1a url("https://www.transparenttextures.com/patterns/stardust.png");
+  color: #fff;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  width: 100%;
+  gap: 50px;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.hero-text {
+  flex: 1;
+  text-align: left;
+  animation: slideFromLeft 1.2s ease-out;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff4081, #a855f7, #00d4ff);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero .subtitle {
+  font-size: 1.2rem;
+  color: #9ca3af;
+  margin-bottom: 30px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.btn,
+.btn-outline {
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  background: linear-gradient(90deg, #ff4081, #a855f7);
+  color: white;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-3px);
+}
+
+.btn-outline {
+  border: 2px solid #ff4081;
+  color: #ff4081;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #ff4081;
+  color: white;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  animation: slideFromRight 1.2s ease-out;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.hero-image img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 3px solid #a855f7;
+  object-fit: cover;
+  z-index: 2;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.25);
+}
+
+.glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 64, 129, 0.3), rgba(168, 85, 247, 0.3), transparent);
+  filter: blur(25px);
+  animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-image img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* ===== About Section ===== */
+.about-section {
+  padding: 80px 20px;
+  background: #0d0d1a url("https://www.transparenttextures.com/patterns/stardust.png");
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.about-section .subtitle {
+  color: #9ca3af;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+  text-align: left;
+}
+
+.about-img img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #ff4081;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+.about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+  background: rgba(255, 64, 129, 0.05);
+  border-left: 3px solid #ff4081;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
+
+.about-info p {
+  margin: 0;
+  color: #cfcfcf;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-info i {
+  color: #ff4081;
+  width: 16px;
+}
+
+.open-to-work {
+  color: #4ade80;
+  font-weight: bold;
+}
+
+.about-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.about-buttons .btn,
+.about-buttons .btn-outline {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ===== Skills Section ===== */
+.skills-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: #0d0d1a url("https://www.transparenttextures.com/patterns/stardust.png");
+  color: #e0e0e0;
+}
+
+.skills-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.skills-section .tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #2a2a40;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: linear-gradient(90deg, #ff4081, #a855f7);
+  color: white;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.skill-card {
+  background: rgba(30, 30, 47, 0.85);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 20px rgba(255, 64, 129, 0.4);
+}
+
+.skill-card p {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.skill-card.hide {
+  display: none !important;
+}
+
+.progress {
+  width: 100%;
+  height: 10px;
+  background: #2a2a40;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress div {
+  height: 100%;
+  background: linear-gradient(90deg, #ff4081, #a855f7);
+  border-radius: 8px;
+  transition: width 1s ease-in-out;
+}
+
+/* ===== Projects Section ===== */
+.projects-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: #0d0d1a url("https://www.transparenttextures.com/patterns/stardust.png");
+  color: #e0e0e0;
+}
+
+.projects-section .subtitle {
+  color: #9ca3af;
+  margin-bottom: 40px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.project-card {
+  background: #1e1e2f;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 20px;
+  text-align: left;
+}
+
+.project-content .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.project-content .tags span {
+  background: #2a2a40;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #ff4081;
+}
+
+.project-content h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.project-content p {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 15px;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+}
+
+.actions a {
+  font-size: 18px;
+  color: #ff4081;
+  transition: 0.3s;
+}
+
+.actions a:hover {
+  color: #a855f7;
+}
+
+.github-btn {
+  margin-top: 40px;
+}
+
+.github-btn a {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #ff4081, #a855f7);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.github-btn a:hover {
+  opacity: 0.9;
+}
+
+/* ===== Experience Section ===== */
+.experience-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: #0d0d1a url("https://www.transparenttextures.com/patterns/stardust.png");
+  color: #e0e0e0;
+}
+
+.experience-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.experience-section .subtitle {
+  color: #9ca3af;
+  margin-bottom: 50px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding-left: 20px;
+  border-left: 2px solid #ff4081;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -11px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background: #ff4081;
+  border-radius: 50%;
+  border: 3px solid #0d0d1a;
+  box-shadow: 0 0 10px #ff4081;
+}
+
+.timeline-content {
+  background: #1e1e2f;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-content h3 {
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.timeline-content .role {
+  color: #ff4081;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.timeline-content .date {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 10px;
+}
+
+.timeline-content ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #cfcfcf;
+}
+
+.timeline-content ul li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .timeline-dot {
+    display: none;
+  }
+}
+
+/* ===== Contact Section ===== */
+.contact-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: #0d0d1a url("https://www.transparenttextures.com/patterns/stardust.png");
+  color: #e0e0e0;
+}
+
+.contact-section .subtitle {
+  color: #9ca3af;
+  margin-bottom: 40px;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+  background: rgba(30, 30, 47, 0.6);
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.contact-info p {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-info i {
+  color: #ff4081;
+}
+
+.socials {
+  margin-top: 15px;
+}
+
+.socials a {
+  margin-right: 12px;
+  font-size: 20px;
+  color: #ff4081;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #a855f7;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+  background: #1e1e2f;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #2a2a40;
+  color: #fff;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #ff4081;
+}
+
+.contact-form button {
+  background: linear-gradient(90deg, #ff4081, #a855f7);
+  border: none;
+  padding: 14px;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: linear-gradient(135deg, #ff4081, #a855f7);
+  color: #f0e9ff;
+  padding: 40px 20px 25px;
+  box-shadow: 0 -4px 15px rgba(168, 85, 247, 0.4);
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer-logo h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px 0;
+}
+
+.footer-logo span {
+  color: #ffe6ff;
+}
+
+.footer-logo p {
+  font-size: 14px;
+  color: #f3e8ffcc;
+  margin: 0;
+}
+
+.footer-nav {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #f0e9ffcc;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 20px;
+  font-size: 22px;
+}
+
+.footer-socials a {
+  color: #f0e9ffcc;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-socials a:hover,
+.footer-socials a:focus {
+  color: #fff;
+  transform: scale(1.15);
+  outline: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: #f3e8ffcc;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-nav {
+    order: 3;
+  }
+
+  .footer-logo {
+    order: 1;
+  }
+
+  .footer-socials {
+    order: 2;
+    justify-content: center;
+  }
+}
